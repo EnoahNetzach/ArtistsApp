@@ -1,12 +1,9 @@
 import React from 'react'
-import { createStore } from 'redux'
 import { shallow } from 'enzyme'
-import App from '..'
-
-const store = createStore(() => {})
+import App from '../App'
 
 describe('App', () => {
   it('renders without crashing', () => {
-    shallow(<App store={store} />)
+    shallow(<App><div /></App>)
   })
 })
