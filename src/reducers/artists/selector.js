@@ -4,8 +4,7 @@ import getDistanceBetween from '../../utils/getDistanceBetween'
 export const sort = {
   AGE_ASC: 'AGE_ASC',
   AGE_DESC: 'AGE_DESC',
-  RATE_ASC: 'RATE_ASC',
-  RATE_DESC: 'RATE_DESC',
+  RATE: 'RATE',
   DISTANCE: 'DISTANCE',
   NONE: 'NONE',
 }
@@ -41,8 +40,7 @@ export default createSelector(
         switch (sorting) {
           case sort.AGE_ASC: return a1.age - a2.age
           case sort.AGE_DESC: return a2.age - a1.age
-          case sort.RATE_ASC: return a1.rate - a2.rate
-          case sort.RATE_DESC: return a2.rate - a1.rate
+          case sort.RATE: return a2.rate - a1.rate
           case sort.DISTANCE: {
             const d1 = getDistanceBetween(londonCoords, {
               lat: Number(a1.latitude),

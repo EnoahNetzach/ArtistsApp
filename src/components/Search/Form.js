@@ -83,8 +83,7 @@ const Form = ({ distancesInKm }) => (
         >
           <MenuItem value={sort.AGE_ASC} primaryText="Age ASC" />
           <MenuItem value={sort.AGE_DESC} primaryText="Age DESC" />
-          <MenuItem value={sort.RATE_ASC} primaryText="Rating ASC" />
-          <MenuItem value={sort.RATE_DESC} primaryText="Rating DESC" />
+          <MenuItem value={sort.RATE} primaryText="Rating" />
           <MenuItem value={sort.DISTANCE} primaryText="Distance" />
           <MenuItem value={sort.NONE} primaryText="None" />
         </Field>

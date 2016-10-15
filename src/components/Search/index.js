@@ -44,7 +44,7 @@ export default compose(
   reduxForm({
     form: formName,
     initialValues: {
-      sort: sort.RATE_DESC,
+      sort: sort.RATE,
       distancesInKm: true,
     },
   }),
