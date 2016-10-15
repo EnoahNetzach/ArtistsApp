@@ -15,14 +15,14 @@ const londonCoords = {
 }
 
 export default createSelector(
-  (state, data = {}) => (data.filters && {
+  (state, data = {}) => (data.filters ? {
     artistId: data.filters.uuid && String(data.filters.uuid),
     ageFrom: data.filters.ageFrom && Number(data.filters.ageFrom),
     ageTo: data.filters.ageTo && Number(data.filters.ageTo),
     rateFrom: data.filters.rateFrom && Number(data.filters.rateFrom),
     rateTo: data.filters.rateTo && Number(data.filters.rateTo),
     gender: data.filters.gender,
-  }),
+  } : {}),
   (state, data = {}) => data.sort || sort.RATE_ASC,
   state => state.get('entities').get('artists'),
   ({ artistId, ageFrom, ageTo, rateFrom, rateTo, gender }, sorting, artists) => {

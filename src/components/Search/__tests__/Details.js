@@ -5,14 +5,14 @@ import { mount } from 'enzyme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import injectTapEventPlugin from 'react-tap-event-plugin'
-import Item from '../Item'
+import Details from '../Details'
 
 const store = createStore(() => {})
 const muiTheme = getMuiTheme({})
 
 injectTapEventPlugin()
 
-describe('Item', () => {
+describe('Details', () => {
   it('renders without crashing', () => {
     const artist = {
       uuid: '42',
@@ -24,7 +24,7 @@ describe('Item', () => {
     mount(
       <Provider store={store}>
         <MuiThemeProvider muiTheme={muiTheme}>
-          <Item artist={artist} />
+          <Details artist={artist} />
         </MuiThemeProvider>
       </Provider>
     )
