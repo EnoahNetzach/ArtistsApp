@@ -9,7 +9,7 @@ import Search from './Search'
 const formName = 'searchForm'
 const artistListId = 'artists'
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, props) => ({
   artists: artistsSelector(state, {
     filters: {
       ageFrom: formValueSelector(formName)(state, 'ageFrom'),
@@ -19,6 +19,9 @@ const mapStateToProps = state => ({
       gender: formValueSelector(formName)(state, 'gender'),
     },
     sort: formValueSelector(formName)(state, 'sort'),
+  }),
+  currentArtist: props.currentArtistUuid && artistsSelector(state, {
+    filters: { uuid: props.currentArtistUuid },
   }),
   artistListSize: listSelector(state, { id: artistListId }),
   distancesInKm: formValueSelector(formName)(state, 'distancesInKm'),

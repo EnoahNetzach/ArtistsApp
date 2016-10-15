@@ -13,6 +13,9 @@ const styles = {
     justifyContent: 'space-between',
     padding: '0 20px 20px',
   },
+  distanceUOM: {
+    width: '100px',
+  },
 }
 
 const Form = ({ distancesInKm }) => (
@@ -87,7 +90,7 @@ const Form = ({ distancesInKm }) => (
         </Field>
       </div>
 
-      <div>
+      <div style={styles.distanceUOM}>
         <Field name="distancesInKm" component={Toggle} label={distancesInKm ? 'Km' : 'Mi'} labelPosition="right" />
       </div>
     </div>
