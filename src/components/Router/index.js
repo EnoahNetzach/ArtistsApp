@@ -5,8 +5,9 @@ import {
   Route,
   Router as ReactRouter,
 } from 'react-router'
+import generateRoute from './generateRoute'
 import connectRoute from './connectRoute'
-import App from './App'
+import App from '../App/App'
 import Search from '../Search'
 
 const mapParametersToProps = ({ location }) => ({
@@ -15,7 +16,7 @@ const mapParametersToProps = ({ location }) => ({
 
 const Router = () => (
   <ReactRouter history={browserHistory}>
-    <Route path="/" component={App}>
+    <Route path={generateRoute()} component={App}>
       <IndexRoute component={connectRoute(mapParametersToProps)(Search)} />
     </Route>
   </ReactRouter>

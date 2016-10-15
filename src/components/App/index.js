@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { Provider } from 'react-redux'
-import Router from './Router'
+import Router from '../Router'
 
 const AppContainer = ({ store }) => (
   <Provider store={store}>

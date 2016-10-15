@@ -3,6 +3,7 @@ import { browserHistory } from 'react-router'
 import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps'
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
+import generateRoute from '../Router/generateRoute'
 import getDistanceBetween from '../../utils/getDistanceBetween'
 
 const londonCoords = {
@@ -35,7 +36,7 @@ const Item = ({ artist, distancesInKm, isOpen = false }) => (
         label="Dismiss"
         primary
         keyboardFocused
-        onTouchTap={() => browserHistory.push('')}
+        onTouchTap={() => browserHistory.push(generateRoute())}
       />
     )}
     modal={false}
