@@ -28,6 +28,11 @@ const styles = {
   },
 }
 
+const onClose = (event) => {
+  event.preventDefault()
+  browserHistory.push(generateRoute())
+}
+
 const Item = ({ artist, distancesInKm, isOpen = false }) => (
   <Dialog
     title={`Artist #${artist.uuid}`}
@@ -36,7 +41,7 @@ const Item = ({ artist, distancesInKm, isOpen = false }) => (
         label="Dismiss"
         primary
         keyboardFocused
-        onTouchTap={() => browserHistory.push(generateRoute())}
+        onTouchTap={onClose}
       />
     )}
     modal={false}
