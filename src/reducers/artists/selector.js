@@ -1,11 +1,18 @@
 import { createSelector } from 'reselect'
+import getDistanceBetween from '../../utils/getDistanceBetween'
 
 export const sort = {
   AGE_ASC: 'AGE_ASC',
   AGE_DESC: 'AGE_DESC',
   RATE_ASC: 'RATE_ASC',
   RATE_DESC: 'RATE_DESC',
-  RATE_NONE: 'RATE_NONE',
+  DISTANCE: 'DISTANCE',
+  NONE: 'NONE',
+}
+
+const londonCoords = {
+  lat: 51.5126064,
+  lon: -0.1802461,
 }
 
 export default createSelector(
@@ -36,7 +43,30 @@ export default createSelector(
           case sort.AGE_DESC: return a2.age - a1.age
           case sort.RATE_ASC: return a1.rate - a2.rate
           case sort.RATE_DESC: return a2.rate - a1.rate
-          case sort.RATE_NONE: default: return 0
+          case sort.DISTANCE: {
+            const d1 = getDistanceBetween(londonCoords, {
+              lat: Number(a1.latitude),
+              lon: Number(a1.longitude),
+            })
+            const d2 = getDistanceBetween(londonCoords, {
+              lat: Number(a2.latitude),
+              lon: Number(a2.longitude),
+            })
+
+            return d1 - d2
+          }
+          case sort.RATE_NONE:
+          default: {
+            if (ageFrom && ageTo) {
+              // eslint-disable-next-line no-mixed-operators
+              const meanAge = ageFrom + (ageTo - ageFrom) / 2
+              const d1 = Math.abs(a1.age - meanAge)
+              const d2 = Math.abs(a2.age - meanAge)
+
+              return d1 - d2
+            }
+            return 0
+          }
         }
       })
       .toArray()
